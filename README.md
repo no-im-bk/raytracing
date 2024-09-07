@@ -6,6 +6,8 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 
 | Chapter | File | Description |
 | --- | --- | --- |
-| 2.1 | [helloworld.cpp](src/helloworld.cpp) | Creates a [gradient square](images/helloworld.ppm) |
+| 2 | [helloworld.cpp](src/helloworld.cpp) | Creates a [gradient square](images/helloworld.ppm) |
 | 3 | [vec3.h](src/vec3.h) | Vector utility class copied from book |
-| 3.1 | [color.h](src/color.h) | Color utility class |
+| 3 | [color.h](src/color.h) | Color utility class |
+| 4 | [rays.cpp](src/rays.cpp) | Uses y coordinate of ray to generate a [gradient](images/rays.ppm) |
+| 4 | [rays.h](src/rays.h) | Ray utility class |
