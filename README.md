@@ -11,4 +11,5 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 3 | [color.h](src/color.h) | Color utility class |
 | 4 | [rays.cpp](src/rays.cpp) | Uses y coordinate of ray to generate a [gradient](images/rays.ppm) |
 | 4 | [rays.h](src/rays.h) | Ray utility class |
-| 4 | [spheres.cpp](src/spheres.cpp) | creates a sphere on top of rays.cpp [here](images/spheres.ppm) |
+| 5 | [spheres.cpp](src/spheres.cpp) | creates a sphere on top of rays.cpp [here](images/spheres.ppm) |
+| 6 | [normals.cpp](src/normals.cpp) | renders the normals of a sphere [here](images/normals.ppm) |
