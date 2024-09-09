@@ -44,6 +44,14 @@ class vec3 {
     double length_squared() const {
         return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
     }
+
+    static vec3 random() {
+        return vec3(random_double(), random_double(), random_double());
+    }
+
+    static vec3 random(double min, double max) {
+        return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
+    }
 };
 
 // point3 is just an alias for vec3, but useful for geometric clarity in the code.
@@ -94,6 +102,32 @@ inline vec3 cross(const vec3& u, const vec3& v) {
 
 inline vec3 unit_vector(const vec3& v) {
     return v / v.length();
+}
+
+/**
+ * Returns a random unit vector
+ */
+inline vec3 random_unit_vector() {
+    while(true) {
+        vec3 random_vector = vec3::random();
+        double length_sq = random_vector.length_squared();
+        // make sure we dont divide by zero and that the vector is in the unit sphere, not square
+        if(length_sq > 1e-160 && length_sq <= 1) { 
+            return random_vector / std::sqrt(length_sq);
+        }
+    }
+}
+
+/**
+ * Returns a random unit vector on the hemisphere in the direction of normal
+ */
+inline vec3 random_on_hemisphere(const vec3& normal) {
+    vec3 vector = random_unit_vector();
+    if (dot(vector, normal) > 0) {
+        return vector;
+    } else {
+        return -vector;
+    }
 }
 
 #endif
