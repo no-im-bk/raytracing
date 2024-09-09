@@ -32,3 +32,4 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 8 | [antialiasing.ppm](images/antialiasing.ppm) | multiple_objects but with antialiasing |
 | 9 | [diffuse1.ppm](images/diffuse1.ppm) | first diffuse material render |
 | 9 | [diffuse2.ppm](images/diffuse2.ppm) | diffuse material render with max depth |
+| 9 | [diffuse3.ppm](images/diffuse3.ppm) | diffuse material render with shadow acne removed |
