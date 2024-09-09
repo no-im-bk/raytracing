@@ -34,3 +34,4 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 9 | [diffuse2.ppm](images/diffuse2.ppm) | diffuse material render with max depth |
 | 9 | [diffuse3.ppm](images/diffuse3.ppm) | diffuse material render with shadow acne removed |
 | 9 | [diffuse4.ppm](images/diffuse4.ppm) | diffuse material render with Lambertian reflection |
+| 9 | [diffuse5.ppm](images/diffuse5.ppm) | diffuse material render with gamma correction |
