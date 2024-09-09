@@ -109,7 +109,7 @@ inline vec3 unit_vector(const vec3& v) {
  */
 inline vec3 random_unit_vector() {
     while(true) {
-        vec3 random_vector = vec3::random();
+        vec3 random_vector = vec3::random(-1,1);
         double length_sq = random_vector.length_squared();
         // make sure we dont divide by zero and that the vector is in the unit sphere, not square
         if(length_sq > 1e-160 && length_sq <= 1) { 
