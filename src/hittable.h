@@ -4,12 +4,15 @@
 #include "ray.h"
 #include "rtweekend.h"
 
+class material;
+
 class hit_record {
     public:
         point3 p;
         vec3 normal;
         double t;
         bool front_face;
+        shared_ptr<material> mat;
 
         /**
          * Determines if ray is coming from front and sets normal against it too

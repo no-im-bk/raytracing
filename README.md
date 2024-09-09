@@ -18,6 +18,7 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 6 | [rtweekend.h](src/rtweekend.h) | main header with utilities |
 | 6 | [interval.h](src/interval.h) | class to represent real intervals |
 | 7 | [camera.h](src/camera.h) | class to represent the camera |
+| 10 | [material.h](src/material.h) | class to represent materials |
 
 ### Images
 
@@ -35,3 +36,4 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 9 | [diffuse3.ppm](images/diffuse3.ppm) | diffuse material render with shadow acne removed |
 | 9 | [diffuse4.ppm](images/diffuse4.ppm) | diffuse material render with Lambertian reflection |
 | 9 | [diffuse5.ppm](images/diffuse5.ppm) | diffuse material render with gamma correction |
+| 10 | [metal1.ppm](images/metal1.ppm) | metal and lambertian materials render |
