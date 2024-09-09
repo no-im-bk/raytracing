@@ -7,6 +7,7 @@ class camera {
   public:
     double aspect_ratio = 1.0;
     int image_width = 100;
+    int samples_per_pixel = 100;
 
     void render(const hittable& world) {
         initialize(); 
@@ -17,13 +18,13 @@ class camera {
         for(int i = 0; i < image_height; i++) {
             std::clog << "Scanlines remaining: " << (image_height - i) << "\n" << std::flush;
             for(int j = 0; j < image_width; j++) {
-                auto pixel_center = pixel00_loc + (j*pixel_delta_u + i*pixel_delta_v);
-                auto ray_direction = pixel_center - camera_center;
-                ray r(camera_center, ray_direction);
+                color pixel_color(0,0,0);
+                for(int sample = 0; sample < samples_per_pixel; sample++) {
+                    ray r = get_ray(j,i);
+                    pixel_color += ray_color(r,world);
+                }
 
-                color pColor = ray_color(r, world);
-
-                write_color(std::cout, pColor);
+                write_color(std::cout, pixel_samples_scale * pixel_color);
             }
         }
         std::clog << "Done!\n";
@@ -35,10 +36,14 @@ class camera {
     point3 pixel00_loc;    // Location of pixel 0, 0
     vec3   pixel_delta_u;  // Offset to pixel to the right
     vec3   pixel_delta_v;  // Offset to pixel below
+    double pixel_samples_scale;
 
     void initialize() {
         // get the image height and make sure its at least 1
         image_height = std::max(1, int(image_width / aspect_ratio));
+
+        // set the scale for each sample of a pixel
+        pixel_samples_scale = 1.0/samples_per_pixel;
 
         // find viewport dimensions from the image dimensions
         double viewport_height = 2.0;
@@ -65,6 +70,24 @@ class camera {
 
     
     }
+
+    /**
+     * Returns a random ray near pixel x,y.
+     */
+    ray get_ray(int x, int y) const {
+        auto offset = sample_square();
+        auto pixel_sample = pixel00_loc + ((x + offset.x()) * pixel_delta_u) + ((y + offset.y())* pixel_delta_v);
+
+        return ray(camera_center, pixel_sample - camera_center);
+    }
+
+    /**
+     * Returns a random point within +/-.5
+     */
+    vec3 sample_square() const {
+        return vec3(random_double() - 0.5, random_double() - 0.5, 0);
+    }
+
 
     /**
      * Returns color of ray. 
