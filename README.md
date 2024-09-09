@@ -21,3 +21,4 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 6 | [multiple_objects.cpp](src/multiple_objects.cpp) | renders two spheres [here](images/multiple_objects.ppm) |
 | 7 | [camera.h](src/camera.h) | class to represent the camera |
 | 7 | [multiple_objects_refactor.cpp](src/multiple_objects_refactor.cpp) | multiple_objects but refactored to use camera.h [here](images/multiple_objects_refactor.ppm) |
+| 8 | [antialiasing.cpp](src/antialiasing.cpp) | multiple_objects but with antialiasing [here](images/antialiasing.ppm) |
