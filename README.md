@@ -31,3 +31,4 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 7 | [multiple_objects_refactor.ppm](images/multiple_objects_refactor.ppm) | multiple_objects but refactored to use camera.h |
 | 8 | [antialiasing.ppm](images/antialiasing.ppm) | multiple_objects but with antialiasing |
 | 9 | [diffuse1.ppm](images/diffuse1.ppm) | first diffuse material render |
+| 9 | [diffuse2.ppm](images/diffuse2.ppm) | diffuse material render with max depth |
