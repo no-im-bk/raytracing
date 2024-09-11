@@ -50,4 +50,22 @@ class metal : public material {
         double fuzz;
 };
 
+class dialectric : public material {
+    public:
+        dialectric(double refraction_index) : refraction_index(refraction_index) {}
+
+        bool scatter(const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered) const override {
+            attenuation = color(1.0,1.0,1.0);
+            double ri = rec.front_face ? refraction_index : 1.0/refraction_index;
+
+            vec3 refracted = refract(r_in.direction(), rec.normal, ri);
+
+            scattered = ray(rec.p, refracted);
+            return true;
+        }
+        
+    private:
+        double refraction_index;
+};
+
 #endif

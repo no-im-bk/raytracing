@@ -38,3 +38,4 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 9 | [diffuse5.ppm](images/diffuse5.ppm) | diffuse material render with gamma correction |
 | 10 | [metal1.ppm](images/metal1.ppm) | metal and lambertian materials render |
 | 10 | [metal2.ppm](images/metal2.ppm) | added fuzziness to the metal |
+| 11 | [always_refract.ppm](images/always_refract.ppm) | added dielectric that only refracts light |

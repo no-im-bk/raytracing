@@ -139,4 +139,11 @@ inline vec3 reflect(const vec3& v, const vec3& n) {
     return v - 2 * dot(v, n)* n;
 }
 
+inline vec3 refract(const vec3& v, const vec3& n, double index_of_refraction) {
+    vec3 uv = unit_vector(v);
+    vec3 r_perpendicular = (uv + n*std::fmin(dot(-uv,n),1.0)) / index_of_refraction;
+    vec3 r_parallel = - n * std::sqrt(std::fmax(1.0 - r_perpendicular.length_squared(),0.0));
+    return r_perpendicular + r_parallel;
+}
+
 #endif
