@@ -57,15 +57,38 @@ class dialectric : public material {
         bool scatter(const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered) const override {
             attenuation = color(1.0,1.0,1.0);
             double ri = rec.front_face ? refraction_index : 1.0/refraction_index;
+            double cos_theta = dot(-unit_vector(r_in.direction()),rec.normal);
 
-            vec3 refracted = refract(r_in.direction(), rec.normal, ri);
+            double sin_theta = std::sqrt(std::fmax(1.0 - cos_theta * cos_theta, 0.0));
 
-            scattered = ray(rec.p, refracted);
+            if(sin_theta / ri > 1.0) {
+                // total internal reflection
+                vec3 reflected = reflect(r_in.direction(), rec.normal);
+                scattered = ray(rec.p, reflected);
+            } else {
+                // reflection and refraction based on reflectance
+                if(reflectance(cos_theta, ri) > random_double()) {
+                    vec3 reflected = reflect(r_in.direction(), rec.normal);
+                    scattered = ray(rec.p, reflected);
+                } else {
+                    vec3 refracted = refract(unit_vector(r_in.direction()), rec.normal, ri);
+                    scattered = ray(rec.p, refracted);
+                }
+                
+            }
+
+            
             return true;
         }
         
     private:
         double refraction_index;
+
+        static double reflectance(double cosine, double refraction_index) {
+            auto r0 = (1 - refraction_index) / (1 + refraction_index);
+            r0 = r0 * r0;
+            return r0 + (1 - r0) * std::pow(1-cosine,5);
+        }
 };
 
 #endif

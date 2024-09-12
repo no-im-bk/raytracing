@@ -39,3 +39,5 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 10 | [metal1.ppm](images/metal1.ppm) | metal and lambertian materials render |
 | 10 | [metal2.ppm](images/metal2.ppm) | added fuzziness to the metal |
 | 11 | [always_refract.ppm](images/always_refract.ppm) | added dielectric that only refracts light |
+| 11 | [total_internal_reflection.ppm](images/total_internal_reflection.ppm) | an air bubble that shows total internal reflection |
+| 11 | [hollow_sphere.ppm](images/hollow_sphere.ppm) | a glass sphere with a bubble, uses reflectance to do both reflection and refraction |
