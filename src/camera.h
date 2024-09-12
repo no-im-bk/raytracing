@@ -10,6 +10,7 @@ class camera {
     int image_width = 100;
     int samples_per_pixel = 10;
     int max_depth = 10;
+    double vfov = 90;
 
     void render(const hittable& world) {
         initialize(); 
@@ -47,13 +48,17 @@ class camera {
         // set the scale for each sample of a pixel
         pixel_samples_scale = 1.0/samples_per_pixel;
 
-        // find viewport dimensions from the image dimensions
-        double viewport_height = 2.0;
-        double viewport_width = viewport_height * (image_width * 1.0 / image_height);
-
         // camera settings
         double focal_length = 1.0;
         camera_center = point3(0,0,0);
+
+        // find viewport dimensions from the image dimensions
+        auto theta = degrees_to_radians(vfov);
+        auto h = std::tan(theta/2) * focal_length;
+        double viewport_height = 2 * h;
+        double viewport_width = viewport_height * (image_width * 1.0 / image_height);
+
+        
 
         // find vectors in the direction of the viewport dimensions
         auto viewport_u = vec3(viewport_width, 0, 0);
