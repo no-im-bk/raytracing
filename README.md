@@ -45,3 +45,4 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 12 | [fov_test2.ppm](images/fov_test2.ppm) | tests new camera position with fov of 90 deg |
 | 12 | [fov_test3.ppm](images/fov_test3.ppm) | tests new camera position with fov of 20 deg |
 | 13 | [defocus.ppm](images/defocus.ppm) | tests defocus blur |
+| 14 | [final_scene.ppm](images/final_scene.ppm) | final render |
