@@ -41,4 +41,6 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 11 | [always_refract.ppm](images/always_refract.ppm) | added dielectric that only refracts light |
 | 11 | [total_internal_reflection.ppm](images/total_internal_reflection.ppm) | an air bubble that shows total internal reflection |
 | 11 | [hollow_sphere.ppm](images/hollow_sphere.ppm) | a glass sphere with a bubble, uses reflectance to do both reflection and refraction |
-| 11 | [fov_test1.ppm](images/fov_test1.ppm) | tests using vertical fov with 2 spheres |
+| 12 | [fov_test1.ppm](images/fov_test1.ppm) | tests using vertical fov with 2 spheres |
+| 12 | [fov_test2.ppm](images/fov_test2.ppm) | tests new camera position with fov of 90 deg |
+| 12 | [fov_test3.ppm](images/fov_test3.ppm) | tests new camera position with fov of 20 deg |
