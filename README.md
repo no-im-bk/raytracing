@@ -4,6 +4,8 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 
 ## Book 1: Ray Tracing in One Weekend
 
+![Final Render](images/final_scene.png)
+
 ### Files
 
 | Chapter | File | Description |
