@@ -1,6 +1,10 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include <thread>
+#include <vector>
+#include <mutex>
+
 #include "hittable.h"
 #include "material.h"
 
@@ -16,6 +20,7 @@ class camera {
     vec3 vup = vec3(0,1,0); // direction of up (+y) on the camera
     double defocus_angle = 0;
     double focus_dist = 10;
+    int num_threads = 4;
 
     void render(const hittable& world) {
         initialize(); 
@@ -23,20 +28,28 @@ class camera {
 
         printf("P3\n%d %d\n255\n", image_width, image_height);
 
-        for(int i = 0; i < image_height; i++) {
-            std::clog << "Scanlines remaining: " << (image_height - i) << "\n" << std::flush;
-            for(int j = 0; j < image_width; j++) {
-                color pixel_color(0,0,0);
-                for(int sample = 0; sample < samples_per_pixel; sample++) {
-                    ray r = get_ray(j,i);
-                    pixel_color += ray_color(r,max_depth, world);
-                }
+        std::vector<std::thread> thread_vector;
 
-                write_color(std::cout, pixel_samples_scale * pixel_color);
+        for(int i = 0; i < num_threads; i++) {
+            thread_vector.emplace_back(&camera::render_thread, this, &world, i);
+        }
+
+        for(int i = 0; i < num_threads; i++) {
+            thread_vector[i].join();
+        }
+
+
+        for(int i = 0; i < image_height; i++) {
+            for(int j = 0; j < image_width; j++) {
+                write_color(std::cout, pixel_samples_scale * image_colors[i][j]);
             }
         }
+
+        
         std::clog << "Done!\n";
     }
+
+    
 
   private:
     int    image_height;   // Rendered image height
@@ -45,13 +58,20 @@ class camera {
     vec3   pixel_delta_u;  // Offset to pixel to the right
     vec3   pixel_delta_v;  // Offset to pixel below
     double pixel_samples_scale;
+    int samples_per_thread; // Samples per pixel per thread
     vec3 u,v,w; // camera basis vectors
     vec3 defocus_disk_u;
     vec3 defocus_disk_v;
+    std::vector<std::vector<color>> image_colors = std::vector<std::vector<color>>();
+    std::mutex image_colors_mutex;
 
     void initialize() {
         // get the image height and make sure its at least 1
         image_height = std::max(1, int(image_width / aspect_ratio));
+
+        // round the number of samples per pixel
+        samples_per_thread = samples_per_pixel / num_threads;
+        samples_per_pixel = samples_per_thread * num_threads;
 
         // set the scale for each sample of a pixel
         pixel_samples_scale = 1.0/samples_per_pixel;
@@ -91,7 +111,34 @@ class camera {
         defocus_disk_v = v * defocus_radius;
 
 
+        // Initialize the 2d vector repesenting the pixel colors
+        for(int i = 0; i < image_height; i++) {
+            std::vector<color> vec;
+            image_colors.push_back(vec);
+            for(int j = 0; j < image_width; j++) {
+                image_colors[i].push_back(color(0,0,0));
+            }
+        }
+
     
+    }
+
+    // thread for rendering
+    void render_thread(const hittable* world, int threadNum) {
+        for(int i = 0; i < image_height; i++) {
+            std::clog << "Thread #" << threadNum << " scanlines remaining: " << (image_height - i) << "\n" << std::flush;
+            for(int j = 0; j < image_width; j++) {
+                color r_color = color(0,0,0);
+                for(int sample = 0; sample < samples_per_thread; sample++) {
+                    ray r = get_ray(j,i);
+                    r_color += ray_color(r,max_depth, *world);                    
+                }
+                {
+                    std::lock_guard<std::mutex> guard(image_colors_mutex);
+                    image_colors[i][j] += r_color;
+                }
+            }
+        }
     }
 
     /**

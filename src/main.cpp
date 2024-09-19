@@ -76,6 +76,8 @@ int main() {
     cam.defocus_angle = 0.6;
     cam.focus_dist = 10.0;
 
+    cam.num_threads = 4;
+
     cam.render(world);
 
 }
