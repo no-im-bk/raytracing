@@ -50,6 +50,12 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 14 | [final_scene.ppm](images/final_scene.ppm) | final render |
 | X | [multithread.ppm](images/multithread.ppm) | experiment to see if multithreading changes produce same image but faster |
 
+## Book 2: Ray Tracing in One Week
+
+| Chapter | File | Description |
+| --- | --- | --- |
+| 2 | [motion_blur.ppm](images/motion_blur.ppm) | Adds motion blur to the diffuse spheres of the book 1 render |
+
 ### How to build
 
 g++ src/main.cpp -o main.o -pthread -std=c++11 -O3
