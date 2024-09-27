@@ -29,6 +29,20 @@ class interval {
         return x;
     }
 
+    double centroid() const {
+        return (max + min) / 2.0;
+    }
+
+    static interval interval_union(const interval& a, const interval& b) {
+        return interval(std::min(a.min, b.min), std::max(a.max, b.max));
+    }
+
+    // expands the interval by amount amt
+    void expand(double amt) {
+        min -= amt;
+        max += amt;
+    }
+
     static const interval empty, universe;
 };
 
