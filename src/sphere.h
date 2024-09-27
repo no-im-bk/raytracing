@@ -21,7 +21,7 @@ class sphere : public hittable {
                 bbox = aabb::aabb_union(bbox_start, bbox_end);
             }
 
-        bool hit(const ray& r, interval(ray_t), hit_record& rec) const override{
+        bool hit(const ray& r, interval ray_t, hit_record& rec) const override{
             // use quadratic formula to find hit locations
             auto curr_center = center.at(r.time());
             auto a = dot(r.direction(),r.direction());
@@ -46,13 +46,20 @@ class sphere : public hittable {
             // set the record for the hit
             rec.t = root;
             rec.p = r.at(rec.t);
-            rec.set_face_normal(r, (rec.p - curr_center) / radius);
+            auto normal_at_hit = (rec.p - curr_center) / radius;
+            rec.set_face_normal(r, normal_at_hit);
             rec.mat = mat;
+            get_sphere_uv(normal_at_hit, rec.u, rec.v);
 
             return true;
         }
 
         aabb bounding_box() const override {return bbox;}
+
+    static void get_sphere_uv(const point3& p, double& u, double& v) {
+        u = std::atan2(-p.z(), p.x()) / (2 * pi) + 1;
+        v = std::atan2(p.y(), p.length()) / pi + 0.5;
+    }
 
     private:
         ray center;
