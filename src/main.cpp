@@ -18,7 +18,7 @@ int main() {
     // ---------------put objects in world-----------------
     hittable_list world;
 
-    auto ground_material = make_shared<lambertian>(color(0.5,0.5,0.5));
+    auto ground_material = make_shared<lambertian>(make_shared<checker_texture>(0.33, color(0.2,0.3,0.1), color(0.9,0.9,0.9)));
     world.add(make_shared<sphere>(point3(0,-1000,0),1000,ground_material));
 
     for(int i = -11; i < 11; i++) {

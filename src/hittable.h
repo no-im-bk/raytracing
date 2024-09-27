@@ -14,6 +14,8 @@ class hit_record {
         double t;
         bool front_face;
         shared_ptr<material> mat;
+        double u;
+        double v;
 
         /**
          * Determines if ray is coming from front and sets normal against it too

@@ -58,6 +58,7 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | --- | --- | --- |
 | 3 | [aabb.cpp](src/aabb.cpp) | Class for Axis Aligned Bounded Boxes |
 | 3 | [bvh.h](src/bvh.h) | A Bounding Volume Heirarchy class ( a tree for detecting ray hits faster) |
+| 4 | [texture.h](src/texture.h) | A class for defining textures |
 
 ### Images
 
@@ -65,6 +66,7 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | --- | --- | --- |
 | 2 | [motion_blur.ppm](images/motion_blur.ppm) | Adds motion blur to the diffuse spheres of the book 1 render |
 | 3 | [bvh.ppm](images/bvh.ppm) | Uses BVH to reduce render time by roughly 7x. Note I diverge from the book here and use my own bvh construction algorithm based on the surface area heuristic |
+| 3 | [checkered_ground.ppm](images/checkered_ground.ppm) | Adds a checkered texture to ground. Note: since at this point the u and v values of the hit are uninitialized, the grid is kinda random |
 
 ### How to build
 
