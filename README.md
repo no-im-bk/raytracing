@@ -75,6 +75,7 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 5 | ![hermitian_frequency.png](images/hermitian_frequency.png) | Noise frequency is modifiable and is 4 times larger |
 | 5 | ![perlin_texture.png](images/perlin_texture.png) | Perlin noise: above image but random values are assigned to vectors not doubles |
 | 5 | ![turbulence.png](images/turbulence.png) | Multiple frequencies of perlin noise summed together |
+| 5 | ![quads.png](images/quads.png) | Renders some quads |
 
 ### How to build
 

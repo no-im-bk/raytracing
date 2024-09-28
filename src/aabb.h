@@ -13,6 +13,7 @@ class aabb {
             axis_interval[0] = x;
             axis_interval[1] = y;
             axis_interval[2] = z;
+            pad_to_minimums();
         };
 
         // construct a aabb that contains a and b
@@ -20,6 +21,7 @@ class aabb {
             for(int i = 0; i < 3; i++) {
                 axis_interval[i] = (a[i] <= b[i]) ? interval(a[i], b[i]) : interval(b[i], a[i]);
             }
+            pad_to_minimums();
         }
 
         double surface_area() const {
@@ -56,6 +58,17 @@ class aabb {
                 }
             }
             return true;
+        }
+
+
+    private:
+        void pad_to_minimums() {
+            double delta = 0.0001;
+            for(int i = 0; i < 3; i++) {
+                if (axis_interval[i].size() < delta) {
+                    axis_interval[i].expand(delta);
+                }
+            }
         }
 };
 
