@@ -57,8 +57,8 @@ class sphere : public hittable {
         aabb bounding_box() const override {return bbox;}
 
     static void get_sphere_uv(const point3& p, double& u, double& v) {
-        u = std::atan2(-p.z(), p.x()) / (2 * pi) + 1;
-        v = std::atan2(p.y(), p.length()) / pi + 0.5;
+        u = std::atan2(-p.z(), p.x()) / (2 * pi) + 0.5;
+        v = std::acos(-p.y()/p.length()) / pi;
     }
 
     private:
