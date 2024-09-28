@@ -69,7 +69,8 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 4 | [checkered_ground.ppm](images/checkered_ground.ppm) | Adds a checkered texture to ground. |
 | 4 | [two_checkered_spheres.ppm](images/two_checkered_spheres.ppm) | TWO checkered spheres. Note the checkers are in x,y,z space not uv space |
 | 4 | [earth.ppm](images/earth.ppm) | Renders a sphere with the earth texture on it |
-| 5 | ![perlin_spheres.png](images/perlin_spheres.png) | Spheres with basic perlin noise |
+| 5 | ![perlin_spheres.png](images/perlin_spheres.png) | Spheres with basic noise |
+| 5 | ![trilinear_interpolation.png](images/trilinear_interpolation.png) | Noise now has trilinear interpolation |
 
 ### How to build
 

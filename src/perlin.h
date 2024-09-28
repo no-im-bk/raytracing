@@ -15,11 +15,26 @@ class perlin {
         }
 
         double noise(const point3& p) const {
-            auto i = int(4*p.x()) & 255;
-            auto j = int(4*p.y()) & 255;
-            auto k = int(4*p.z()) & 255;
+            auto x = int(std::floor(p.x()));
+            auto y = int(std::floor(p.y()));
+            auto z = int(std::floor(p.z()));
 
-            return randfloat[perm_x[i] ^ perm_y[j] ^ perm_z[k]];
+            auto xx = p.x() - std::floor(p.x());
+            auto yy = p.y() - std::floor(p.y());
+            auto zz = p.z() - std::floor(p.z());
+
+            double value = 0;
+
+            value += randfloat[perm_x[ x    & 255] ^ perm_y[ y    & 255] ^ perm_z[ z    & 255]] * (1-xx) * (1-yy) * (1-zz);
+            value += randfloat[perm_x[ x    & 255] ^ perm_y[ y    & 255] ^ perm_z[(z+1) & 255]] * (1-xx) * (1-yy) *    zz ;
+            value += randfloat[perm_x[ x    & 255] ^ perm_y[(y+1) & 255] ^ perm_z[ z    & 255]] * (1-xx) *    yy  * (1-zz);
+            value += randfloat[perm_x[ x    & 255] ^ perm_y[(y+1) & 255] ^ perm_z[(z+1) & 255]] * (1-xx) *    yy  *    zz ;
+            value += randfloat[perm_x[(x+1) & 255] ^ perm_y[ y    & 255] ^ perm_z[ z    & 255]] *    xx  * (1-yy) * (1-zz);
+            value += randfloat[perm_x[(x+1) & 255] ^ perm_y[ y    & 255] ^ perm_z[(z+1) & 255]] *    xx  * (1-yy) *    zz ;
+            value += randfloat[perm_x[(x+1) & 255] ^ perm_y[(y+1) & 255] ^ perm_z[ z    & 255]] *    xx  *    yy  * (1-zz);
+            value += randfloat[perm_x[(x+1) & 255] ^ perm_y[(y+1) & 255] ^ perm_z[(z+1) & 255]] *    xx  *    yy  *    zz ;
+
+            return value;
         }
 
     private:
