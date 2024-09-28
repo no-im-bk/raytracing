@@ -73,6 +73,8 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 5 | ![trilinear_interpolation.png](images/trilinear_interpolation.png) | Noise now has trilinear interpolation |
 | 5 | ![hermitian_smoothed.png](images/hermitian_smoothed.png) | Noise is now smoothed with a [hermite spline](https://en.wikipedia.org/wiki/Cubic_Hermite_spline) |
 | 5 | ![hermitian_frequency.png](images/hermitian_frequency.png) | Noise frequency is modifiable and is 4 times larger |
+| 5 | ![perlin_texture.png](images/perlin_texture.png) | Perlin noise: above image but random values are assigned to vectors not doubles |
+| 5 | ![turbulence.png](images/turbulence.png) | Multiple frequencies of perlin noise summed together |
 
 ### How to build
 

@@ -41,6 +41,20 @@ class perlin {
             return value;
         }
 
+        double turb(const point3& p, int depth) const {
+            double total = 0;
+            auto pp = p;
+            double weight = 1;
+
+            for(int i = 0; i < depth; i++) {
+                total += weight * noise(pp);
+                weight /= 2;
+                pp *= 2;
+            }
+
+            return std::fabs(total);
+        }
+
     private:
         static const int point_count = 256;
         vec3 randvec[point_count];
