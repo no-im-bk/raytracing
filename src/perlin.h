@@ -23,6 +23,10 @@ class perlin {
             auto yy = p.y() - std::floor(p.y());
             auto zz = p.z() - std::floor(p.z());
 
+            xx = xx*xx*(-2*xx + 3);
+            yy = yy*yy*(-2*yy + 3);
+            zz = zz*zz*(-2*zz + 3);
+
             double value = 0;
 
             value += randfloat[perm_x[ x    & 255] ^ perm_y[ y    & 255] ^ perm_z[ z    & 255]] * (1-xx) * (1-yy) * (1-zz);
@@ -32,7 +36,7 @@ class perlin {
             value += randfloat[perm_x[(x+1) & 255] ^ perm_y[ y    & 255] ^ perm_z[ z    & 255]] *    xx  * (1-yy) * (1-zz);
             value += randfloat[perm_x[(x+1) & 255] ^ perm_y[ y    & 255] ^ perm_z[(z+1) & 255]] *    xx  * (1-yy) *    zz ;
             value += randfloat[perm_x[(x+1) & 255] ^ perm_y[(y+1) & 255] ^ perm_z[ z    & 255]] *    xx  *    yy  * (1-zz);
-            value += randfloat[perm_x[(x+1) & 255] ^ perm_y[(y+1) & 255] ^ perm_z[(z+1) & 255]] *    xx  *    yy  *    zz ;
+            value += randfloat[perm_x[(x+1) & 255] ^ perm_y[(y+1) & 255] ^ perm_z[(z+1) & 255]] *    xx  *    yy  *    zz;
 
             return value;
         }

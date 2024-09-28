@@ -71,6 +71,7 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 4 | [earth.ppm](images/earth.ppm) | Renders a sphere with the earth texture on it |
 | 5 | ![perlin_spheres.png](images/perlin_spheres.png) | Spheres with basic noise |
 | 5 | ![trilinear_interpolation.png](images/trilinear_interpolation.png) | Noise now has trilinear interpolation |
+| 5 | ![hermitian_smoothed.png](images/hermitian_smoothed.png) | Noise is now smoothed with a [hermite spline](https://en.wikipedia.org/wiki/Cubic_Hermite_spline) |
 
 ### How to build
 
