@@ -7,6 +7,7 @@
 
 #include "hittable.h"
 #include "material.h"
+#include "image_writer.h"
 
 class camera {
   public:
@@ -22,11 +23,13 @@ class camera {
     double focus_dist = 10;
     int num_threads = 4;
 
-    void render(const hittable& world) {
+    void render(const hittable& world, const char* filename) {
         initialize(); 
         // RENDER
 
-        printf("P3\n%d %d\n255\n", image_width, image_height);
+        //printf("P3\n%d %d\n255\n", image_width, image_height);
+
+        image_writer img = image_writer(image_width, image_height, 3);
 
         std::vector<std::thread> thread_vector;
 
@@ -41,9 +44,11 @@ class camera {
 
         for(int i = 0; i < image_height; i++) {
             for(int j = 0; j < image_width; j++) {
-                write_color(std::cout, pixel_samples_scale * image_colors[i][j]);
+                img.append_pixel(pixel_samples_scale * image_colors[i][j]);
             }
         }
+
+        img.write(filename);
 
         
         std::clog << "Done!\n";

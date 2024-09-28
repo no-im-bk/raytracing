@@ -68,7 +68,7 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 3 | [bvh.ppm](images/bvh.ppm) | Uses BVH to reduce render time by roughly 7x. Note I diverge from the book here and use my own bvh construction algorithm based on the surface area heuristic |
 | 4 | [checkered_ground.ppm](images/checkered_ground.ppm) | Adds a checkered texture to ground. |
 | 4 | [two_checkered_spheres.ppm](images/two_checkered_spheres.ppm) | TWO checkered spheres. Note the checkers are in x,y,z space not uv space |
-| 4 | [earth.ppm](images/earth.ppm) | Renders a sphere with the earth on it |
+| 4 | [earth.ppm](images/earth.ppm) | Renders a sphere with the earth texture on it |
 
 ### How to build
 

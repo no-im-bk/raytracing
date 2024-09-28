@@ -9,11 +9,7 @@
 
 
 
-void bouncing_spheres() {
-
-    
-
-    
+void bouncing_spheres(const char* filename) {
 
     // ---------------put objects in world-----------------
     hittable_list world;
@@ -79,11 +75,11 @@ void bouncing_spheres() {
 
     cam.num_threads = 4;
 
-    cam.render(world);
+    cam.render(world, filename);
 
 }
 
-void checkered_spheres() {
+void checkered_spheres(const char* filename) {
     hittable_list world;
 
     auto checker = make_shared<checker_texture>(0.32, color(.2, .3, .1), color(.9, .9, .9));
@@ -105,10 +101,10 @@ void checkered_spheres() {
 
     cam.defocus_angle = 0;
 
-    cam.render(world);
+    cam.render(world, filename);
 }
 
-void earth() {
+void earth(const char* filename) {
     auto earth_texture = make_shared<image_texture>("earthmap.jpg");
     auto earth_surface = make_shared<lambertian>(earth_texture);
     auto globe = make_shared<sphere>(point3(0,0,0), 2, earth_surface);
@@ -127,13 +123,13 @@ void earth() {
 
     cam.defocus_angle = 0;
 
-    cam.render(hittable_list(globe));
+    cam.render(hittable_list(globe), filename);
 }
 
 int main(int argc, char * argv[]) {
-    switch(argv[1][0] - '0') {
-        case 1: bouncing_spheres(); break;
-        case 2: checkered_spheres(); break;
-        case 3: earth(); break;
+    switch(argv[1][0]) {
+        case '1': bouncing_spheres(argv[2]); break;
+        case '2': checkered_spheres(argv[2]); break;
+        case '3': earth(argv[2]); break;
     }
 }
