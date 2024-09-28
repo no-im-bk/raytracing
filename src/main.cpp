@@ -104,8 +104,8 @@ void checkered_spheres(const char* filename) {
     cam.render(world, filename);
 }
 
-void earth(const char* filename) {
-    auto earth_texture = make_shared<image_texture>("earthmap.jpg");
+void earth(const char* filenamein, const char* filenameout) {
+    auto earth_texture = make_shared<image_texture>(filenamein);
     auto earth_surface = make_shared<lambertian>(earth_texture);
     auto globe = make_shared<sphere>(point3(0,0,0), 2, earth_surface);
 
@@ -123,13 +123,13 @@ void earth(const char* filename) {
 
     cam.defocus_angle = 0;
 
-    cam.render(hittable_list(globe), filename);
+    cam.render(hittable_list(globe), filenameout);
 }
 
 int main(int argc, char * argv[]) {
     switch(argv[1][0]) {
         case '1': bouncing_spheres(argv[2]); break;
         case '2': checkered_spheres(argv[2]); break;
-        case '3': earth(argv[2]); break;
+        case '3': earth(argv[2], argv[3]); break;
     }
 }
