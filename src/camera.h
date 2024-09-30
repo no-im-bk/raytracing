@@ -132,6 +132,7 @@ class camera {
 
     // thread for rendering
     void render_thread(const hittable* world, int threadNum) {
+        std::srand(threadNum);
         for(int i = 0; i < image_height; i++) {
             std::clog << "Thread #" << threadNum << " scanlines remaining: " << (image_height - i) << "\n" << std::flush;
             for(int j = 0; j < image_width; j++) {
