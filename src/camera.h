@@ -30,7 +30,7 @@ class camera {
 
         //printf("P3\n%d %d\n255\n", image_width, image_height);
 
-        image_writer img = image_writer(image_width, image_height, 3);
+        
 
         std::vector<std::thread> thread_vector;
 
@@ -42,6 +42,7 @@ class camera {
             thread_vector[i].join();
         }
 
+        image_writer img = image_writer(image_width, image_height, 3);
 
         for(int i = 0; i < image_height; i++) {
             for(int j = 0; j < image_width; j++) {
