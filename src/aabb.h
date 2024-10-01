@@ -72,4 +72,12 @@ class aabb {
         }
 };
 
+inline aabb operator+(aabb bbox, vec3 offset) {
+    return aabb(bbox.axis_interval[0] + offset.x(), bbox.axis_interval[1] + offset.y(), bbox.axis_interval[2] + offset.z());
+}
+
+inline aabb operator+(vec3 offset, aabb bbox) {
+    return bbox + offset;
+}
+
 #endif

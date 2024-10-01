@@ -33,4 +33,32 @@ class hittable {
         virtual aabb bounding_box() const = 0;
 };
 
+class translate : public hittable {
+    public:
+
+        translate(const shared_ptr<hittable> object,const vec3& offset) : object(object), offset(offset) {
+            bbox = object->bounding_box() + offset;
+        }
+
+        bool hit(const ray& r, interval ray_t, hit_record& rec) const override {
+            ray new_r = ray(r.origin() - offset, r.direction(), r.time());
+            bool is_hit = object->hit(new_r, ray_t, rec);
+
+            if(is_hit) {
+                rec.p = rec.p + offset;
+            }
+
+            return is_hit;
+        }
+
+        aabb bounding_box() const override {
+            return bbox;
+        }
+
+    private:
+    shared_ptr<hittable> object;
+    vec3 offset;
+    aabb bbox;
+};
+
 #endif
