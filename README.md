@@ -52,6 +52,8 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 
 ## Book 2: Ray Tracing in One Week
 
+![Final Render](images/book2_final_highq.png)
+
 ### Files
 
 | Chapter | File | Description |
@@ -83,6 +85,7 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 8 | ![cornell_box2.png](images/cornell_box2.png) | Cornell box but boxes in wrong spot |
 | 8 | ![cornell_box3.png](images/cornell_box3.png) | Cornell box |
 | 9 | ![cornell_box_smoke.png](images/cornell_box_smoke.png) | Cornell box with smoke effect |
+| 10 | ![book2_final_highq.png](images/book2_final_highq.png) | Final render |
 
 ### How to build
 

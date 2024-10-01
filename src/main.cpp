@@ -351,7 +351,7 @@ void final_scene(const char* filenamein, const char* filenameout) {
     world.add(make_shared<constant_medium>(boundary, .0001, color(1,1,1)));
 
     auto emat = make_shared<lambertian>(make_shared<image_texture>(filenamein));
-    world.add(make_shared<sphere>(point3(400,200,400), 100, emat));
+    world.add(make_shared<translate>(make_shared<rotate_y>(make_shared<sphere>(point3(0,0,0), 100, emat),180),vec3(400,200,400)));
     auto pertext = make_shared<noise_texture>(0.2);
     world.add(make_shared<sphere>(point3(220,280,300), 80, make_shared<lambertian>(pertext)));
 
@@ -372,9 +372,9 @@ void final_scene(const char* filenamein, const char* filenameout) {
     camera cam;
 
     cam.aspect_ratio      = 1.0;
-    cam.image_width       = 400;// 800;
-    cam.samples_per_pixel = 250;// 10000;
-    cam.max_depth         = 4;//40;
+    cam.image_width       = 800;
+    cam.samples_per_pixel = 10000;
+    cam.max_depth         = 40;
     cam.background        = color(0,0,0);
 
     cam.vfov     = 40;
@@ -384,7 +384,7 @@ void final_scene(const char* filenamein, const char* filenameout) {
 
     cam.defocus_angle = 0;
 
-    cam.num_threads = 1;
+    cam.num_threads = 5;
 
     cam.render(world, filenameout);
 }
