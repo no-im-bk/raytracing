@@ -59,6 +59,9 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 3 | [aabb.cpp](src/aabb.cpp) | Class for Axis Aligned Bounded Boxes |
 | 3 | [bvh.h](src/bvh.h) | A Bounding Volume Heirarchy class ( a tree for detecting ray hits faster) |
 | 4 | [texture.h](src/texture.h) | A class for defining textures |
+| 5 | [perlin.h](src/perlin.h) | A class for creating perlin noise |
+| 6 | [quad.h](src/quad.h) | A class for creating quad primitives |
+| 9 | [constant_medium.h](src/constant_medium.h) | A class for creating volumetric effects |
 
 ### Images
 
@@ -78,7 +81,8 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 6 | ![quads.png](images/quads.png) | Renders some quads |
 | 7 | ![lights.png](images/lights.png) | Adds light source |
 | 8 | ![cornell_box2.png](images/cornell_box2.png) | Cornell box but boxes in wrong spot |
-| 8 | ![cornell_box3.png](images/cornell_box2.png) | Cornell box |
+| 8 | ![cornell_box3.png](images/cornell_box3.png) | Cornell box |
+| 9 | ![cornell_box_smoke.png](images/cornell_box_smoke.png) | Cornell box with smoke effect |
 
 ### How to build
 
