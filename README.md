@@ -76,7 +76,8 @@ A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Boo
 | 5 | ![perlin_texture.png](images/perlin_texture.png) | Perlin noise: above image but random values are assigned to vectors not doubles |
 | 5 | ![turbulence.png](images/turbulence.png) | Multiple frequencies of perlin noise summed together |
 | 6 | ![quads.png](images/quads.png) | Renders some quads |
-| 6 | ![lights.png](images/lights.png) | Adds light source |
+| 7 | ![lights.png](images/lights.png) | Adds light source |
+| 8 | ![cornell_box2.png](images/cornell_box2.png) | Cornell box |
 
 ### How to build
 

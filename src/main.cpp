@@ -231,6 +231,9 @@ void cornell_box(const char* filename) {
     world.add(make_shared<quad>(point3(555,555,555), vec3(-555,0,0), vec3(0,0,-555), white));
     world.add(make_shared<quad>(point3(0,0,555), vec3(555,0,0), vec3(0,555,0), white));
 
+    world.add(box(point3(130, 0, 65), point3(295, 165, 230), white));
+    world.add(box(point3(265, 0, 295), point3(430, 330, 460), white));
+
     camera cam;
 
     cam.aspect_ratio      = 1.0;
@@ -246,7 +249,7 @@ void cornell_box(const char* filename) {
 
     cam.defocus_angle = 0;
 
-    cam.num_threads = 1;
+    cam.num_threads = 4;
 
     cam.render(world, filename);
 }
