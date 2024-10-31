@@ -1,6 +1,14 @@
-# BK Raytraces in 1 weekend
+# BK Raytraces in ~~one~~MANY weekend(s)
 
 A repo of all the code I wrote while reading the [Ray Tracing in One Weekend Book Series](https://raytracing.github.io)
+
+## Notable differences from the content of the book:
+
+Firstly, I took on the task of making the raytracer multithreaded because I was tired of waiting for renders. This allowed me to speed up renders by ~3-4 times on my machine.
+
+Also, I used a different construction of the BVH that was more optimal (using the surface area heuristic, described [here](https://www.pbr-book.org/3ed-2018/Primitives_and_Intersection_Acceleration/Bounding_Volume_Hierarchies))
+
+Finally at some point through book 2 I finally decided to use a library to generate pngs instead of those silly ppms.
 
 ## Book 1: Ray Tracing in One Weekend
 
